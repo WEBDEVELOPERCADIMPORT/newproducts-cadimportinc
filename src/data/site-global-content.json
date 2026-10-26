@@ -17,6 +17,11 @@
                         "path": "futuro"
                     }
                 ]
+            },
+            {
+                "id": "nuevos-productos",
+                "label": "Nuevos Productos",
+                "path": "nuevos-productos"
             }
         ],
         "footer": {
@@ -41,6 +46,11 @@
                         "path": "Future"
                     }
                 ]
+            },
+            {
+                "id": "new-products",
+                "label": "New Products",
+                "path": "nuevos-productos"
             }
         ],
         "footer": {

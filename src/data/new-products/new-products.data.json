@@ -1,0 +1,206 @@
+{
+  "products": {
+    "es": [
+      {
+        "slug": "guatelinda-salsa-chile-cobanero",
+        "id": "guatelinda-salsa-chile-cobanero",
+        "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/Guatelinda_Salsa_Chile_Cobanero.jpeg",
+        "tamao": "8 OZ",
+        "procedencia": "Guatemala",
+        "ingredientes": [
+          "Chile coban"
+        ],
+        "minimo_compra": "40 cajas",
+        "tiempo_de_vida": "1 año",
+        "certificaciones": "ISF en regla",
+        "clase_categoria": "FOOD PRODUCTS",
+        "margen_sugerido": "30%",
+        "cajas_por_paleta": "168",
+        "cajas_por_unidad": "12",
+        "rotacion_esperada": "20 cajas al mes",
+        "proveedor_fabricante": "Kepix",
+        "competidores_directos": [
+          {
+            "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/competencia/Salsa_Cobanera.webp",
+            "nombre": "Mi tierra salsa cobanera",
+            "precio": "$12.99"
+          }
+        ],
+        "nivel_de_inversion_inicia": "$1,076.00",
+        "nombre_marca_del_producto": "Guatelinda Salsa Chile Cobanero",
+        "precio_sugerido_cajaunidad": "$ 38.48",
+        "precio_de_compra_al_proveedor": "$ 26.90",
+        "tiempo_de_produccin_entrega_estimado": "6 semanas"
+      },
+      {
+        "slug": "chips-de-platano-artesanales",
+        "id": "chips-de-platano-artesanales",
+        "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/Guatelinda_Salsa_Chile_Cobanero.jpeg",
+        "tamao": "5 OZ",
+        "procedencia": "Guatemala",
+        "ingredientes": [
+          "Plátano macho verde",
+          "Aceite de girasol",
+          "Sal marina"
+        ],
+        "minimo_compra": "50 cajas",
+        "tiempo_de_vida": "9 meses",
+        "certificaciones": "HACCP, Libre de Gluten",
+        "clase_categoria": "SNACKS & CHIPS",
+        "margen_sugerido": "35%",
+        "cajas_por_paleta": "120",
+        "cajas_por_unidad": "24",
+        "rotacion_esperada": "35 cajas al mes",
+        "proveedor_fabricante": "Snacks del Valle",
+        "competidores_directos": [
+          {
+            "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/competencia/Salsa_Cobanera.webp",
+            "nombre": "Plataninas Tradicionales",
+            "precio": "$2.49"
+          }
+        ],
+        "nivel_de_inversion_inicia": "$1,250.00",
+        "nombre_marca_del_producto": "Chips de Plátano Artesanales Guatelinda",
+        "precio_sugerido_cajaunidad": "$ 34.00",
+        "precio_de_compra_al_proveedor": "$ 22.10",
+        "tiempo_de_produccin_entrega_estimado": "4 semanas"
+      },
+      {
+        "slug": "bebida-de-horchata-tradicional",
+        "id": "bebida-de-horchata-tradicional",
+        "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/Guatelinda_Salsa_Chile_Cobanero.jpeg",
+        "tamao": "16 FL OZ",
+        "procedencia": "Guatemala",
+        "ingredientes": [
+          "Arroz",
+          "Canela",
+          "Semilla de morro",
+          "Vainilla",
+          "Azúcar de caña"
+        ],
+        "minimo_compra": "60 cajas",
+        "tiempo_de_vida": "12 meses",
+        "certificaciones": "FDA Registrado, Kosher",
+        "clase_categoria": "BEVERAGES",
+        "margen_sugerido": "32%",
+        "cajas_por_paleta": "96",
+        "cajas_por_unidad": "12",
+        "rotacion_esperada": "40 cajas al mes",
+        "proveedor_fabricante": "Bebidas Típicas de Centroamérica",
+        "competidores_directos": [
+          {
+            "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/competencia/Salsa_Cobanera.webp",
+            "nombre": "Horchata Casera La Gloria",
+            "precio": "$3.19"
+          }
+        ],
+        "nivel_de_inversion_inicia": "$1,440.00",
+        "nombre_marca_del_producto": "Bebida de Horchata Tradicional Guatelinda",
+        "precio_sugerido_cajaunidad": "$ 36.00",
+        "precio_de_compra_al_proveedor": "$ 24.50",
+        "tiempo_de_produccin_entrega_estimado": "5 semanas"
+      }
+    ],
+    "en": [
+      {
+        "slug": "guatelinda-salsa-chile-cobanero",
+        "id": "guatelinda-salsa-chile-cobanero",
+        "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/Guatelinda_Salsa_Chile_Cobanero.jpeg",
+        "tamao": "8 OZ",
+        "procedencia": "Guatemala",
+        "ingredientes": [
+          "Coban chili pepper"
+        ],
+        "minimo_compra": "40 boxes",
+        "tiempo_de_vida": "1 year",
+        "certificaciones": "IFS compliant",
+        "clase_categoria": "FOOD PRODUCTS",
+        "margen_sugerido": "30%",
+        "cajas_por_paleta": "168",
+        "cajas_por_unidad": "12",
+        "rotacion_esperada": "20 boxes per month",
+        "proveedor_fabricante": "Kepix",
+        "competidores_directos": [
+          {
+            "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/competencia/Salsa_Cobanera.webp",
+            "nombre": "Mi tierra salsa cobanera",
+            "precio": "$12.99"
+          }
+        ],
+        "nivel_de_inversion_inicia": "$1,076.00",
+        "nombre_marca_del_producto": "Guatelinda Salsa Chile Cobanero",
+        "precio_sugerido_cajaunidad": "$ 38.48",
+        "precio_de_compra_al_proveedor": "$ 26.90",
+        "tiempo_de_produccin_entrega_estimado": "6 weeks"
+      },
+      {
+        "slug": "chips-de-platano-artesanales",
+        "id": "chips-de-platano-artesanales",
+        "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/Guatelinda_Salsa_Chile_Cobanero.jpeg",
+        "tamao": "5 OZ",
+        "procedencia": "Guatemala",
+        "ingredientes": [
+          "Green plantain",
+          "Sunflower oil",
+          "Sea salt"
+        ],
+        "minimo_compra": "50 boxes",
+        "tiempo_de_vida": "9 months",
+        "certificaciones": "HACCP, Gluten-Free",
+        "clase_categoria": "SNACKS & CHIPS",
+        "margen_sugerido": "35%",
+        "cajas_por_paleta": "120",
+        "cajas_por_unidad": "24",
+        "rotacion_esperada": "35 boxes per month",
+        "proveedor_fabricante": "Snacks del Valle",
+        "competidores_directos": [
+          {
+            "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/competencia/Salsa_Cobanera.webp",
+            "nombre": "Traditional Plantain Chips",
+            "precio": "$2.49"
+          }
+        ],
+        "nivel_de_inversion_inicia": "$1,250.00",
+        "nombre_marca_del_producto": "Artisan Plantain Chips Guatelinda",
+        "precio_sugerido_cajaunidad": "$ 34.00",
+        "precio_de_compra_al_proveedor": "$ 22.10",
+        "tiempo_de_produccin_entrega_estimado": "4 weeks"
+      },
+      {
+        "slug": "bebida-de-horchata-tradicional",
+        "id": "bebida-de-horchata-tradicional",
+        "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/Guatelinda_Salsa_Chile_Cobanero.jpeg",
+        "tamao": "16 FL OZ",
+        "procedencia": "Guatemala",
+        "ingredientes": [
+          "Rice",
+          "Cinnamon",
+          "Morro seeds",
+          "Vanilla",
+          "Cane sugar"
+        ],
+        "minimo_compra": "60 boxes",
+        "tiempo_de_vida": "12 months",
+        "certificaciones": "FDA Registered, Kosher",
+        "clase_categoria": "BEVERAGES",
+        "margen_sugerido": "32%",
+        "cajas_por_paleta": "96",
+        "cajas_por_unidad": "12",
+        "rotacion_esperada": "40 boxes per month",
+        "proveedor_fabricante": "Bebidas Típicas de Centroamérica",
+        "competidores_directos": [
+          {
+            "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/competencia/Salsa_Cobanera.webp",
+            "nombre": "La Gloria Homemade Horchata",
+            "precio": "$3.19"
+          }
+        ],
+        "nivel_de_inversion_inicia": "$1,440.00",
+        "nombre_marca_del_producto": "Traditional Horchata Beverage Guatelinda",
+        "precio_sugerido_cajaunidad": "$ 36.00",
+        "precio_de_compra_al_proveedor": "$ 24.50",
+        "tiempo_de_produccin_entrega_estimado": "5 weeks"
+      }
+    ]
+  }
+}

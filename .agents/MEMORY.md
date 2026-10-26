@@ -126,6 +126,7 @@ src/
 | **Error Handling** | `src/pages/404.astro` | Activo | Vista estándar 404 para rutas o idiomas inválidos. |
 | **Sitemap Dinámico** | `src/utils/seo/sitemapUrls.ts` | Activo | Inyección de URLs localizadas en `@astrojs/sitemap`. |
 | **Base de Datos (Extensible)** | `src/db/` | Configurado | Estructura base para conectar clientes ORM / SQL según se requiera. |
+| **New Products Module** | `src/pages/[lang]/nuevos-productos/`, `src/actions/products/`, `src/data/new-products/` | Activo | Catálogo de propuestas y fichas ejecutivas de viabilidad técnica y financiera (5 secciones DOCX). |
 
 ---
 
@@ -167,3 +168,4 @@ src/
 | Fecha | Identificador | Capa | Resumen del Cambio | Verificado Por |
 | :--- | :--- | :--- | :--- | :--- |
 | 2026-10-26 | `#Init-AutoUI-Agents` | Sistema de Agentes | Reconfiguración completa del ecosistema multi-agente (`manager`, `coder`, `tester`), catálogo de skills (`create-data`, `create-action`, `create-component`, `create-page`), actualización de `MEMORY.md`, `AGENTS.md` y `CLAUDE.md` orientados al starter kit AutoUI (Astro, Tailwind CSS v4, i18n, Cloudflare). | Manager AutoUI |
+| 2026-10-26 | `#Task-NewProducts-Feature` | Fullstack (Data, Actions, Components, Pages) | Implementación completa del catálogo de Nuevos Productos (`/[lang]/nuevos-productos`) y fichas de evaluación detallada (`/[lang]/nuevos-productos/[slug]`). Incluye Server Actions (`getNewProducts`, `getProductProposalBySlug`), tipado estricto `ProductProposal`, paridad `es`/`en` 100%, filtro reactivo con `astro:page-load`, y reporte estructurado basado en la referencia DOCX (5 secciones). | Tester AutoUI (VERIFIED) |

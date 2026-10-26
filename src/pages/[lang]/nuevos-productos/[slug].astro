@@ -1,0 +1,66 @@
+---
+// src/pages/[lang]/nuevos-productos/[slug].astro
+import Layout from "../../../layouts/Layout.astro";
+import { LANGUAGES, type Lang } from "../../../i18n/config.i18n";
+import content from "../../../data/site-nuevos-productos-content.json";
+import { actions } from "astro:actions";
+import ProductProposalDetail from "../../../components/nuevos-productos/components/ProductProposalDetail.astro";
+
+const lang = Astro.params.lang as Lang;
+const slug = Astro.params.slug as string;
+
+// 1. Validar idioma y parámetro slug
+if (!(lang in LANGUAGES) || !(lang in content) || !slug) {
+  return Astro.redirect("/404");
+}
+
+const t = content[lang];
+
+// 2. Ejecutar Server Action para obtener la propuesta por su slug
+const { data: response, error } = await Astro.callAction(
+  actions.getProductProposalBySlug,
+  {
+    slug,
+    lang,
+  },
+);
+
+if (error || !response?.data) {
+  return Astro.redirect("/404");
+}
+
+const product = response.data;
+
+const pageTitle = `${product.nombre_marca_del_producto} | ${lang === "es" ? "Evaluación de Producto" : "Product Evaluation"} | CAD Import Inc`;
+const pageDescription = `${product.nombre_marca_del_producto} (${product.clase_categoria}) - ${product.procedencia}. Margen sugerido: ${product.margen_sugerido}. Proveedor: ${product.proveedor_fabricante}.`;
+
+// Schema.org JSON-LD para SEO y rich snippets
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: product.nombre_marca_del_producto,
+  image: product.image,
+  description: pageDescription,
+  brand: {
+    "@type": "Brand",
+    name: product.proveedor_fabricante,
+  },
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "USD",
+    price: product.precio_sugerido_cajaunidad.replace(/[^0-9.]/g, ""),
+    availability: "https://schema.org/InStock",
+  },
+};
+---
+
+<Layout
+  title={pageTitle}
+  lang={lang}
+  description={pageDescription}
+  image={product.image}
+  schema={productSchema}
+  canonicalPath={`/${lang}/nuevos-productos/${product.slug}`}
+>
+  <ProductProposalDetail product={product} lang={lang} />
+</Layout>

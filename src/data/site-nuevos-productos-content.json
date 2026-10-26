@@ -1,0 +1,136 @@
+{
+  "es": {
+    "meta": {
+      "title": "Nuevos Productos en Evaluación | CAD Import Inc",
+      "description": "Explora nuestro catálogo de nuevos productos, fichas técnicas y propuestas de inversión para distribución y comercialización."
+    },
+    "hero": {
+      "badge": "Propuestas 2026",
+      "title": "Nuevos Productos en Evaluación",
+      "subtitle": "Análisis exhaustivo de viabilidad técnica, comercial y financiera de nuevos productos para expansión de catálogo."
+    },
+    "catalog": {
+      "title": "Propuestas de Productos",
+      "subtitle": "Selecciona un producto para consultar su ficha técnica y análisis de viabilidad completo.",
+      "empty": "No hay propuestas de productos disponibles por el momento.",
+      "filterPlaceholder": "Buscar por nombre, categoría o proveedor...",
+      "allCategories": "Todas las Categorías"
+    },
+    "sections": {
+      "identification": "Identificación del producto",
+      "features": "Características principales",
+      "marketAnalysis": "Análisis del mercado y competencia",
+      "financialAnalysis": "Análisis financiero preliminar",
+      "feasibility": "Evaluación de viabilidad"
+    },
+    "fields": {
+      "nombre_marca_del_producto": "Nombre / Marca del producto",
+      "clase_categoria": "Clase o Categoría",
+      "procedencia": "Procedencia",
+      "proveedor_fabricante": "Proveedor / Fabricante",
+      "tamao": "Tamaño / Presentación",
+      "ingredientes": "Ingredientes principales",
+      "tiempo_de_vida": "Tiempo de vida útil",
+      "certificaciones": "Certificaciones",
+      "cajas_por_unidad": "Unidades por caja",
+      "cajas_por_paleta": "Cajas por paleta",
+      "minimo_compra": "Mínimo de compra",
+      "rotacion_esperada": "Rotación esperada",
+      "tiempo_de_produccin_entrega_estimado": "Tiempo de producción y entrega estimado",
+      "precio_de_compra_al_proveedor": "Precio de compra al proveedor",
+      "precio_sugerido_cajaunidad": "Precio sugerido de venta (Caja)",
+      "margen_sugerido": "Margen bruto sugerido",
+      "nivel_de_inversion_inicia": "Nivel de inversión inicial",
+      "competidores_directos": "Competidores directos"
+    },
+    "competitors": {
+      "product": "Producto Competidor",
+      "price": "Precio en Mercado"
+    },
+    "feasibilityContent": {
+      "scoreLabel": "Puntaje de Viabilidad",
+      "recommendationLabel": "Recomendación Comercial",
+      "recommendationText": "Producto aprobado preliminarmente con margen competitivo y baja barrera de inversión inicial.",
+      "points": [
+        "Margen bruto proyectado superior al umbral mínimo del 25%",
+        "Cumplimiento de certificaciones internacionales y sanitarias",
+        "Cadena de suministro establecida con tiempos de entrega confiables"
+      ]
+    },
+    "actions": {
+      "viewDetails": "Ver Ficha Técnica",
+      "viewEvaluation": "Ver Evaluación",
+      "backToProducts": "Volver a Productos",
+      "contact": "Contactar",
+      "downloadBrochure": "Descargar Ficha PDF",
+      "requestSample": "Solicitar Muestra"
+    }
+  },
+  "en": {
+    "meta": {
+      "title": "New Products Under Evaluation | CAD Import Inc",
+      "description": "Explore our catalog of new products, technical sheets, and investment proposals for distribution and commercialization."
+    },
+    "hero": {
+      "badge": "2026 Proposals",
+      "title": "New Products Under Evaluation",
+      "subtitle": "Comprehensive technical, commercial, and financial feasibility analysis of new products for catalog expansion."
+    },
+    "catalog": {
+      "title": "Product Proposals",
+      "subtitle": "Select a product to view its technical sheet and full feasibility analysis.",
+      "empty": "No product proposals available at this time.",
+      "filterPlaceholder": "Search by name, category or supplier...",
+      "allCategories": "All Categories"
+    },
+    "sections": {
+      "identification": "Product identification",
+      "features": "Main characteristics",
+      "marketAnalysis": "Market and competition analysis",
+      "financialAnalysis": "Preliminary financial analysis",
+      "feasibility": "Feasibility evaluation"
+    },
+    "fields": {
+      "nombre_marca_del_producto": "Product / Brand name",
+      "clase_categoria": "Class or Category",
+      "procedencia": "Origin",
+      "proveedor_fabricante": "Supplier / Manufacturer",
+      "tamao": "Size / Presentation",
+      "ingredientes": "Main ingredients",
+      "tiempo_de_vida": "Shelf life",
+      "certificaciones": "Certifications",
+      "cajas_por_unidad": "Units per case",
+      "cajas_por_paleta": "Cases per pallet",
+      "minimo_compra": "Minimum purchase",
+      "rotacion_esperada": "Expected turnover",
+      "tiempo_de_produccin_entrega_estimado": "Estimated production and delivery time",
+      "precio_de_compra_al_proveedor": "Supplier purchase price",
+      "precio_sugerido_cajaunidad": "Suggested sale price (Case)",
+      "margen_sugerido": "Suggested gross margin",
+      "nivel_de_inversion_inicia": "Initial investment level",
+      "competidores_directos": "Direct competitors"
+    },
+    "competitors": {
+      "product": "Competitor Product",
+      "price": "Market Price"
+    },
+    "feasibilityContent": {
+      "scoreLabel": "Feasibility Score",
+      "recommendationLabel": "Commercial Recommendation",
+      "recommendationText": "Product preliminarily approved with competitive margin and low initial investment barrier.",
+      "points": [
+        "Projected gross margin exceeding the minimum 25% threshold",
+        "Compliance with international sanitary and quality certifications",
+        "Established supply chain with reliable delivery lead times"
+      ]
+    },
+    "actions": {
+      "viewDetails": "View Technical Sheet",
+      "viewEvaluation": "View Evaluation",
+      "backToProducts": "Back to Products",
+      "contact": "Contact Us",
+      "downloadBrochure": "Download PDF Sheet",
+      "requestSample": "Request Sample"
+    }
+  }
+}
