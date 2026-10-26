@@ -1,0 +1,230 @@
+---
+// src/components/nuevos-productos/sections/NewProductsCatalog.astro
+import type { Lang } from '../../../i18n/config.i18n';
+import type { ProductProposal } from '../../../types/product';
+import content from '../../../data/site-nuevos-productos-content.json';
+import NewProductCard from '../components/NewProductCard.astro';
+
+interface Props {
+  products: ProductProposal[];
+  categories: string[];
+  lang: Lang;
+}
+
+const { products, categories, lang } = Astro.props;
+const t = content[lang] ?? content.es;
+---
+
+{/* Catalog Section with Realtime Filtering */}
+<div class="bg-white">
+  <section class="w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-10">
+    
+    {/* Filter & Search Bar Header */}
+    <div class="mb-10 p-6 rounded-sm bg-white border border-gray-200 shadow-xs">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        
+        <div>
+          <h2 class="text-2xl font-bold text-[#0b3c61] uppercase tracking-wide">
+            {t.catalog.title}
+          </h2>
+          <p class="text-xs sm:text-sm text-gray-500 mt-1">
+            {t.catalog.subtitle}
+          </p>
+        </div>
+
+        {/* Counter Badge */}
+        <div class="inline-flex items-center gap-2 self-start md:self-auto px-3.5 py-1.5 rounded-sm bg-[#f8f9fa] text-[#0b3c61] border border-gray-200 text-xs font-bold shadow-xs">
+          <span class="w-2 h-2 rounded-full bg-[#76b800]"></span>
+          <span>
+            <span id="filter-count">{products.length}</span> {t.catalog.countLabel}
+          </span>
+        </div>
+
+      </div>
+
+      {/* Filter Controls */}
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-12 gap-4">
+        
+        {/* Text Search Input */}
+        <div class="md:col-span-7 relative">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            type="text"
+            id="filter-search"
+            placeholder={t.catalog.filterPlaceholder}
+            class="w-full pl-10 pr-4 py-2.5 rounded-sm bg-white border border-gray-300 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-1 focus:ring-[#299898] focus:border-[#299898] transition shadow-xs"
+          />
+        </div>
+
+        {/* Category Dropdown Select */}
+        <div class="md:col-span-5 relative">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+            </svg>
+          </div>
+          <select
+            id="filter-category"
+            class="w-full pl-10 pr-8 py-2.5 rounded-sm bg-white border border-gray-300 text-gray-900 text-sm focus:outline-none focus:ring-1 focus:ring-[#299898] focus:border-[#299898] appearance-none transition cursor-pointer shadow-xs"
+          >
+            <option value="all">{t.catalog.allCategories}</option>
+            {categories.map((cat) => (
+              <option value={cat.toLowerCase()}>{cat}</option>
+            ))}
+          </select>
+          <div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-gray-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Category Pills (Quick Access) */}
+      {categories.length > 0 && (
+        <div class="mt-4 flex flex-wrap items-center gap-2 pt-4 border-t border-gray-200">
+          <button
+            type="button"
+            data-category-pill="all"
+            class="category-pill active-pill px-3.5 py-1.5 rounded-sm text-xs font-bold uppercase tracking-wider bg-[#0b3c61] text-white border border-[#0b3c61] transition cursor-pointer shadow-xs"
+          >
+            {t.catalog.allCategories}
+          </button>
+          {categories.map((cat) => (
+            <button
+              type="button"
+              data-category-pill={cat.toLowerCase()}
+              class="category-pill px-3.5 py-1.5 rounded-sm text-xs font-bold uppercase tracking-wider bg-[#f8f9fa] text-gray-700 hover:bg-gray-200 border border-gray-200 transition cursor-pointer"
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      )}
+
+    </div>
+
+    {/* Products Grid */}
+    {products.length > 0 ? (
+      <div 
+        id="products-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8"
+      >
+        {products.map((product) => (
+          <NewProductCard product={product} lang={lang} />
+        ))}
+      </div>
+    ) : (
+      <div class="p-12 text-center rounded-sm bg-white border border-gray-200 text-gray-500 shadow-xs">
+        <p class="text-base font-semibold">{t.catalog.empty}</p>
+      </div>
+    )}
+
+    {/* Filter Empty State (Shown via JS when filtering has 0 matches) */}
+    <div 
+      id="filter-empty"
+      class="hidden p-12 text-center rounded-sm bg-white border border-gray-200 text-gray-500 mt-6 shadow-xs"
+    >
+      <div class="w-12 h-12 mx-auto rounded-sm bg-[#f8f9fa] border border-gray-200 flex items-center justify-center text-gray-400 mb-3">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h3 class="text-base font-bold text-[#0b3c61]">
+        {t.catalog.noResultsTitle}
+      </h3>
+      <p class="text-xs sm:text-sm text-gray-500 mt-1">
+        {t.catalog.noResultsHint}
+      </p>
+    </div>
+
+  </section>
+</div>
+
+{/* Client-Side Search and Category Filter with astro:page-load */}
+<script>
+  function initProductFilter() {
+    const searchInput = document.getElementById('filter-search') as HTMLInputElement | null;
+    const categorySelect = document.getElementById('filter-category') as HTMLSelectElement | null;
+    const cards = document.querySelectorAll<HTMLElement>('[data-product-card]');
+    const countDisplay = document.getElementById('filter-count');
+    const emptyState = document.getElementById('filter-empty');
+    const pills = document.querySelectorAll<HTMLButtonElement>('[data-category-pill]');
+
+    if (!cards.length) return;
+
+    function setPillActive(targetCategory: string) {
+      pills.forEach((pill) => {
+        const pillCat = (pill.getAttribute('data-category-pill') || 'all').toLowerCase();
+        if (pillCat === targetCategory) {
+          pill.classList.add('bg-[#0b3c61]', 'text-white', 'border-[#0b3c61]');
+          pill.classList.remove('bg-[#f8f9fa]', 'text-gray-700', 'border-gray-200');
+        } else {
+          pill.classList.remove('bg-[#0b3c61]', 'text-white', 'border-[#0b3c61]');
+          pill.classList.add('bg-[#f8f9fa]', 'text-gray-700', 'border-gray-200');
+        }
+      });
+    }
+
+    function applyFilter() {
+      const query = (searchInput?.value ?? '').trim().toLowerCase();
+      const selectedCategory = (categorySelect?.value ?? 'all').toLowerCase();
+
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const cardSearch = (card.getAttribute('data-search') ?? '').toLowerCase();
+        const cardCategory = (card.getAttribute('data-category') ?? '').toLowerCase();
+
+        const matchesQuery = !query || cardSearch.includes(query);
+        const matchesCategory = selectedCategory === 'all' || cardCategory === selectedCategory;
+
+        if (matchesQuery && matchesCategory) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (countDisplay) {
+        countDisplay.textContent = visibleCount.toString();
+      }
+
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+    }
+
+    searchInput?.addEventListener('input', applyFilter);
+
+    categorySelect?.addEventListener('change', () => {
+      const selectedVal = (categorySelect.value ?? 'all').toLowerCase();
+      setPillActive(selectedVal);
+      applyFilter();
+    });
+
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const targetCategory = (pill.getAttribute('data-category-pill') || 'all').toLowerCase();
+        if (categorySelect) {
+          categorySelect.value = targetCategory;
+        }
+        setPillActive(targetCategory);
+        applyFilter();
+      });
+    });
+  }
+
+  initProductFilter();
+  document.addEventListener('astro:page-load', initProductFilter);
+</script>

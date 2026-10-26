@@ -1,60 +1,162 @@
 {
-    "es": {
-        "nav": [
-            {
-                "id": "home",
-                "label": "Inicio",
-                "path": ""
-            },
-            {
-                "id": "about",
-                "label": "Nosotros",
-                "path": "about",
-                "chilndren": [
-                    {
-                        "id": "futuro",
-                        "label": "Futuro",
-                        "path": "futuro"
-                    }
-                ]
-            },
-            {
-                "id": "nuevos-productos",
-                "label": "Nuevos Productos",
-                "path": "nuevos-productos"
-            }
-        ],
-        "footer": {
-            "rights": "Todos los derechos reservados."
+  "es": {
+    "nav": [
+      {
+        "id": "home",
+        "label": "Inicio",
+        "path": ""
+      }
+    ],
+    "footer": {
+      "rights": "Todos los derechos reservados.",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "CAD Import Inc"
+      },
+      "social": [
+        {
+          "id": "facebook",
+          "label": "Facebook",
+          "href": "https://www.facebook.com/cadimportinc.usa"
+        },
+        {
+          "id": "instagram",
+          "label": "Instagram",
+          "href": "https://www.instagram.com/cadimportinc.usa"
         }
-    },
-    "en": {
-        "nav": [
-            {
-                "id": "home",
-                "label": "Home",
-                "path": ""
-            },
-            {
-                "id": "about",
-                "label": "About Us",
-                "path": "about",
-                "chilndren": [
-                    {
-                        "id": "future",
-                        "label": "Future Us",
-                        "path": "Future"
-                    }
-                ]
-            },
-            {
-                "id": "new-products",
-                "label": "New Products",
-                "path": "nuevos-productos"
-            }
+      ],
+      "certification": {
+        "src": "/images/footer/certification.png",
+        "alt": "Certificación NMSDC"
+      },
+      "locations": {
+        "title": "UBICACIONES DE ALMACENES",
+        "addressLine1": "650 Centerpoint Blvd,",
+        "addressLine2": "New Castle, Delaware 19720",
+        "schedule": "De lunes a viernes, de 8:00 a 17:00 (hora del este).",
+        "phone": "(302) 628-4178",
+        "phoneHref": "tel:+13026284178"
+      },
+      "careers": {
+        "title": "CARRERAS PROFESIONALES",
+        "linkLabel": "Únete a nuestro equipo",
+        "href": "#"
+      },
+      "newsletter": {
+        "title": "SUSCRÍBETE A NUESTRO BOLETÍN INFORMATIVO",
+        "namePlaceholder": "Enter your first name",
+        "emailPlaceholder": "Enter your best email",
+        "languagePlaceholder": "Preferred language",
+        "languageOptions": [
+          {
+            "value": "en",
+            "label": "English"
+          },
+          {
+            "value": "es",
+            "label": "Español"
+          }
         ],
-        "footer": {
-            "rights": "All rights reserved."
-        }
+        "submit": "Subscribe!",
+        "success": "¡Gracias por suscribirte!"
+      },
+      "stores": {
+        "title": "ENCUENTRE NUESTRAS LÍNEAS DE PRODUCTOS EXCLUSIVAS EN",
+        "items": [
+          {
+            "id": "vasalsuper",
+            "alt": "Vas al Super",
+            "src": "/images/footer/vasalsuper.png",
+            "href": "https://vasalsuper.store/"
+          },
+          {
+            "id": "amazon",
+            "alt": "Amazon",
+            "src": "/images/footer/amazon.png",
+            "href": "https://www.amazon.com/"
+          }
+        ]
+      }
     }
+  },
+  "en": {
+    "nav": [
+      {
+        "id": "home",
+        "label": "Home",
+        "path": ""
+      }
+    ],
+    "footer": {
+      "rights": "All rights reserved.",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "CAD Import Inc"
+      },
+      "social": [
+        {
+          "id": "facebook",
+          "label": "Facebook",
+          "href": "https://www.facebook.com/cadimportinc.usa"
+        },
+        {
+          "id": "instagram",
+          "label": "Instagram",
+          "href": "https://www.instagram.com/cadimportinc.usa"
+        }
+      ],
+      "certification": {
+        "src": "/images/footer/certification.png",
+        "alt": "NMSDC Certification"
+      },
+      "locations": {
+        "title": "WAREHOUSE LOCATIONS",
+        "addressLine1": "650 Centerpoint Blvd,",
+        "addressLine2": "New Castle, Delaware 19720",
+        "schedule": "Monday to Friday, 8:00 to 17:00 (Eastern Time).",
+        "phone": "(302) 628-4178",
+        "phoneHref": "tel:+13026284178"
+      },
+      "careers": {
+        "title": "CAREERS",
+        "linkLabel": "Join our team",
+        "href": "#"
+      },
+      "newsletter": {
+        "title": "SUBSCRIBE TO OUR NEWSLETTER",
+        "namePlaceholder": "Enter your first name",
+        "emailPlaceholder": "Enter your best email",
+        "languagePlaceholder": "Preferred language",
+        "languageOptions": [
+          {
+            "value": "en",
+            "label": "English"
+          },
+          {
+            "value": "es",
+            "label": "Español"
+          }
+        ],
+        "submit": "Subscribe!",
+        "success": "Thanks for subscribing!"
+      },
+      "stores": {
+        "title": "FIND OUR EXCLUSIVE PRODUCT LINES AT",
+        "items": [
+          {
+            "id": "vasalsuper",
+            "alt": "Vas al Super",
+            "src": "/images/footer/vasalsuper.png",
+            "href": "https://vasalsuper.store/"
+          },
+          {
+            "id": "amazon",
+            "alt": "Amazon",
+            "src": "/images/footer/amazon.png",
+            "href": "https://www.amazon.com/"
+          }
+        ]
+      }
+    }
+  }
 }

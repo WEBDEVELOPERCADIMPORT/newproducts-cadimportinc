@@ -13,8 +13,8 @@ export const getNewProductsUrls = (): string[] => {
   const typedData = newProductsData as NewProductsData;
 
   for (const lang of langs) {
-    // List page
-    urls.push(`${BASE_URL}/${lang}/nuevos-productos`);
+    // List page (Home)
+    urls.push(`${BASE_URL}/${lang}/`);
 
     // Individual product proposal detail pages
     const products = typedData.products[lang] ?? typedData.products.es ?? [];

@@ -4,7 +4,7 @@ import Layout from "../../../layouts/Layout.astro";
 import { LANGUAGES, type Lang } from "../../../i18n/config.i18n";
 import content from "../../../data/site-nuevos-productos-content.json";
 import { actions } from "astro:actions";
-import ProductProposalDetail from "../../../components/nuevos-productos/components/ProductProposalDetail.astro";
+import ProductProposalDetail from "../../../components/nuevos-productos/sections/ProductProposalDetail.astro";
 
 const lang = Astro.params.lang as Lang;
 const slug = Astro.params.slug as string;
@@ -48,7 +48,7 @@ const productSchema = {
   offers: {
     "@type": "Offer",
     priceCurrency: "USD",
-    price: product.precio_sugerido_cajaunidad.replace(/[^0-9.]/g, ""),
+    price: (product.precio_sugerido_cajaunidad || '').replace(/[^0-9.]/g, ""),
     availability: "https://schema.org/InStock",
   },
 };

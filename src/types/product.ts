@@ -26,7 +26,11 @@ export interface ProductProposal {
   precio_sugerido_cajaunidad: string;
   precio_de_compra_al_proveedor: string;
   tiempo_de_produccin_entrega_estimado: string;
+  isPublished?: boolean;
+  createdAt?: string;
 }
+
+export type Product = ProductProposal;
 
 export interface NewProductsData {
   products: {

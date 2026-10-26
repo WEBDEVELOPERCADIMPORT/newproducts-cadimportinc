@@ -1,15 +1,24 @@
-import { defineAction } from 'astro:actions';
+// src/actions/index.ts
 import { getReviews } from './reviews/getReviews.action';
-import { getNewProducts } from './products/getNewProducts.action';
-import { getProductProposalBySlug } from './products/getProductProposalBySlug.action';
+import {
+  getProducts,
+  getNewProducts,
+  getProductsByCategory,
+  getProductBySlug,
+  getProductById,
+  getProductsForCategory,
+  getProdcutBySlug,
+  getProductProposalBySlug,
+} from './products/products.action';
 
 export const server = {
-  miAccion: defineAction({
-    handler: async () => {
-      return { success: true };
-    },
-  }),
   getReviews,
+  getProducts,
   getNewProducts,
+  getProductsByCategory,
+  getProductBySlug,
+  getProductById,
+  getProductsForCategory,
+  getProdcutBySlug,
   getProductProposalBySlug,
 };

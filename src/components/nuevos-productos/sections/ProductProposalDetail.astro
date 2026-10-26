@@ -1,0 +1,535 @@
+---
+// src/components/nuevos-productos/sections/ProductProposalDetail.astro
+import type { Lang } from '../../../i18n/config.i18n';
+import type { ProductProposal } from '../../../types/product';
+import content from '../../../data/site-nuevos-productos-content.json';
+
+interface Props {
+  product: ProductProposal;
+  lang: Lang;
+}
+
+const { product, lang } = Astro.props;
+const t = content[lang] ?? content.es;
+---
+
+<div class="product-proposal-container py-8 sm:py-12 w-full px-4 sm:px-6 lg:px-10">
+  
+  {/* Top Navigation & Breadcrumbs on clean light gray bar */}
+  <nav class="bg-[#f4f7f9] px-4 py-2.5 rounded-sm border border-gray-200 mb-6 flex items-center gap-2 text-xs sm:text-sm text-gray-500 shadow-xs">
+    <a href={`/${lang}/`} class="text-[#0b3c61] hover:text-[#299898] font-medium transition-colors">
+      {lang === 'es' ? 'Inicio' : 'Home'}
+    </a>
+    <span class="text-gray-400">/</span>
+    <span class="text-gray-900 font-bold truncate max-w-xs sm:max-w-md">
+      {product.nombre_marca_del_producto}
+    </span>
+  </nav>
+
+  {/* Header Banner: Corporate Navy Gradient with bottom lime border */}
+  <header class="relative rounded-sm bg-gradient-to-r from-[#0b3c61] via-[#0d3d66] to-[#0e3a5d] border-b-4 border-[#76b800] p-6 sm:p-8 md:p-10 text-white shadow-md overflow-hidden mb-10">
+    <div class="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+      
+      <div class="max-w-3xl">
+        <div class="flex flex-wrap items-center gap-2.5 mb-3">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm text-xs font-bold uppercase tracking-wider bg-[#76b800] text-white shadow-xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+            {lang === 'es' ? 'Propuesta en Evaluación' : 'Proposal Under Evaluation'}
+          </span>
+          <span class="inline-flex items-center px-3 py-1 rounded-sm text-xs font-bold uppercase tracking-wider bg-white/10 text-white border border-white/20 shadow-xs">
+            {product.clase_categoria}
+          </span>
+        </div>
+
+        <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight font-sans">
+          {product.nombre_marca_del_producto}
+        </h1>
+        
+        <p class="mt-2 text-xs sm:text-sm text-slate-200 flex items-center gap-2 font-normal">
+          <span>{lang === 'es' ? 'Ficha Ejecutiva de Viabilidad y Pre-Factibilidad' : 'Executive Feasibility & Technical Evaluation Sheet'}</span>
+          <span>•</span>
+          <span class="font-bold text-[#76b800]">CAD Import Inc</span>
+        </p>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="space-y-8">
+
+    {/* ========================================================
+        SECCIÓN 1: Identificación del producto
+        ======================================================== */}
+    <section class="bg-white rounded-sm border border-gray-200 p-6 sm:p-8 shadow-xs">
+      <div class="flex items-center gap-3 border-b border-gray-200 pb-4 mb-6">
+        <div class="w-8 h-8 rounded-sm bg-[#0b3c61] text-white flex items-center justify-center font-bold text-sm shadow-xs">
+          1
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-[#0b3c61] uppercase tracking-wide">
+            {t.sections.identification}
+          </h2>
+          <p class="text-xs text-gray-500">
+            {lang === 'es' ? 'Datos generales y especificaciones de empaque' : 'General product data and packaging specifications'}
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Clean Framed Product Image */}
+        <div class="lg:col-span-5 flex flex-col items-center">
+          <div class="relative w-full aspect-square rounded-sm overflow-hidden bg-white border border-gray-200 p-6 flex items-center justify-center shadow-xs">
+            <img
+              src={product.image}
+              alt={product.nombre_marca_del_producto}
+              class="max-w-full max-h-full object-contain"
+            />
+            <div class="absolute bottom-3 right-3">
+              <span class="inline-flex items-center px-2.5 py-1 rounded-sm text-xs font-bold bg-[#0b3c61] text-white shadow-xs">
+                {product.tamao}
+              </span>
+            </div>
+          </div>
+          <p class="mt-2.5 text-xs text-gray-500 text-center font-medium">
+            {lang === 'es' ? 'Presentación oficial de muestra de importación' : 'Official import sample presentation'}
+          </p>
+        </div>
+
+        {/* Corporate Table with Bordered Rows & Bold Navy Field Names */}
+        <div class="lg:col-span-7">
+          <div class="border border-gray-200 rounded-sm overflow-hidden shadow-xs">
+            <table class="w-full text-left border-collapse">
+              <tbody class="divide-y divide-gray-200 text-xs sm:text-sm">
+                
+                <tr class="bg-white">
+                  <th scope="row" class="py-3 px-4 font-bold uppercase tracking-wider text-[#0b3c61] bg-[#f8f9fa] w-2/5 border-r border-gray-200">
+                    {t.fields.nombre_marca_del_producto}
+                  </th>
+                  <td class="py-3 px-4 font-bold text-gray-900">
+                    {product.nombre_marca_del_producto}
+                  </td>
+                </tr>
+
+                <tr class="bg-white">
+                  <th scope="row" class="py-3 px-4 font-bold uppercase tracking-wider text-[#0b3c61] bg-[#f8f9fa] border-r border-gray-200">
+                    {t.fields.clase_categoria}
+                  </th>
+                  <td class="py-3 px-4 font-bold text-[#299898]">
+                    {product.clase_categoria}
+                  </td>
+                </tr>
+
+                <tr class="bg-white">
+                  <th scope="row" class="py-3 px-4 font-bold uppercase tracking-wider text-[#0b3c61] bg-[#f8f9fa] border-r border-gray-200">
+                    {t.fields.procedencia}
+                  </th>
+                  <td class="py-3 px-4 font-semibold text-gray-800">
+                    {product.procedencia}
+                  </td>
+                </tr>
+
+                <tr class="bg-white">
+                  <th scope="row" class="py-3 px-4 font-bold uppercase tracking-wider text-[#0b3c61] bg-[#f8f9fa] border-r border-gray-200">
+                    {t.fields.proveedor_fabricante}
+                  </th>
+                  <td class="py-3 px-4 font-semibold text-gray-800">
+                    {product.proveedor_fabricante}
+                  </td>
+                </tr>
+
+                <tr class="bg-white">
+                  <th scope="row" class="py-3 px-4 font-bold uppercase tracking-wider text-[#0b3c61] bg-[#f8f9fa] border-r border-gray-200">
+                    {t.fields.tamao}
+                  </th>
+                  <td class="py-3 px-4 font-semibold text-gray-800">
+                    {product.tamao}
+                  </td>
+                </tr>
+
+                <tr class="bg-white">
+                  <th scope="row" class="py-3 px-4 font-bold uppercase tracking-wider text-[#0b3c61] bg-[#f8f9fa] border-r border-gray-200">
+                    {t.fields.cajas_por_unidad}
+                  </th>
+                  <td class="py-3 px-4 font-semibold text-gray-800">
+                    {product.cajas_por_unidad} {lang === 'es' ? 'unidades / caja' : 'units / case'}
+                  </td>
+                </tr>
+
+                <tr class="bg-white">
+                  <th scope="row" class="py-3 px-4 font-bold uppercase tracking-wider text-[#0b3c61] bg-[#f8f9fa] border-r border-gray-200">
+                    {t.fields.cajas_por_paleta}
+                  </th>
+                  <td class="py-3 px-4 font-semibold text-gray-800">
+                    {product.cajas_por_paleta} {lang === 'es' ? 'cajas por paleta' : 'cases per pallet'}
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ========================================================
+        SECCIÓN 2: Características principales
+        ======================================================== */}
+    <section class="bg-white rounded-sm border border-gray-200 p-6 sm:p-8 shadow-xs">
+      <div class="flex items-center gap-3 border-b border-gray-200 pb-4 mb-6">
+        <div class="w-8 h-8 rounded-sm bg-[#0b3c61] text-white flex items-center justify-center font-bold text-sm shadow-xs">
+          2
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-[#0b3c61] uppercase tracking-wide">
+            {t.sections.features}
+          </h2>
+          <p class="text-xs text-gray-500">
+            {lang === 'es' ? 'Ingredientes, vida útil y certificaciones de inocuidad' : 'Ingredients, shelf life, and safety certifications'}
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Ingredients Clean Badges */}
+        <div class="md:col-span-2 p-5 rounded-sm bg-[#f8f9fa] border border-gray-200 shadow-xs">
+          <h3 class="text-xs font-bold text-[#0b3c61] uppercase tracking-wider mb-3">
+            {t.fields.ingredientes}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {product.ingredientes.map((ingrediente) => (
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-xs sm:text-sm font-semibold bg-white text-gray-800 border border-gray-200 shadow-xs">
+                <svg class="w-3.5 h-3.5 text-[#76b800] shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                {ingrediente}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Shelf Life & Certification Seal Badge */}
+        <div class="space-y-4">
+          <div class="p-4 rounded-sm bg-[#f8f9fa] border border-gray-200 shadow-xs">
+            <h3 class="text-xs font-bold text-[#0b3c61] uppercase tracking-wider">
+              {t.fields.tiempo_de_vida}
+            </h3>
+            <p class="mt-1 text-base font-bold text-gray-900 flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#299898]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{product.tiempo_de_vida}</span>
+            </p>
+          </div>
+
+          <div class="p-4 rounded-sm bg-emerald-50 border border-emerald-200 shadow-xs">
+            <h3 class="text-xs font-bold text-emerald-900 uppercase tracking-wider">
+              {t.fields.certificaciones}
+            </h3>
+            <p class="mt-1 text-sm font-bold text-emerald-950 flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#1bb75e] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+              <span>{product.certificaciones}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ========================================================
+        SECCIÓN 3: Análisis del mercado y competencia
+        ======================================================== */}
+    <section class="bg-white rounded-sm border border-gray-200 p-6 sm:p-8 shadow-xs">
+      <div class="flex items-center gap-3 border-b border-gray-200 pb-4 mb-6">
+        <div class="w-8 h-8 rounded-sm bg-[#0b3c61] text-white flex items-center justify-center font-bold text-sm shadow-xs">
+          3
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-[#0b3c61] uppercase tracking-wide">
+            {t.sections.marketAnalysis}
+          </h2>
+          <p class="text-xs text-gray-500">
+            {lang === 'es' ? 'Comparativa con alternativas vigentes en góndola' : 'Comparison against retail alternatives currently on the market'}
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+        
+        {/* Proposed Product Benchmark Card */}
+        <div class="p-6 rounded-sm bg-white border-2 border-[#299898] shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm text-xs font-bold uppercase tracking-wider bg-[#299898] text-white shadow-xs">
+                ★ {lang === 'es' ? 'Nuestra Propuesta' : 'Our Proposal'}
+              </span>
+              <span class="inline-block px-2.5 py-1 rounded-sm text-xs font-bold bg-[#76b800] text-white shadow-xs">
+                {product.margen_sugerido} {lang === 'es' ? 'Margen' : 'Margin'}
+              </span>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-sm bg-white border border-gray-200 p-1 flex items-center justify-center shrink-0">
+                <img
+                  src={product.image}
+                  alt={product.nombre_marca_del_producto}
+                  class="max-w-full max-h-full object-contain"
+                />
+              </div>
+              <div>
+                <h4 class="font-bold text-[#0b3c61] text-base leading-snug">
+                  {product.nombre_marca_del_producto}
+                </h4>
+                <p class="text-xs text-gray-500 mt-0.5">
+                  {product.tamao} • {product.procedencia}
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-6 space-y-2.5 border-t border-gray-200 pt-4 text-xs">
+              <div class="flex justify-between items-center text-gray-600">
+                <span class="font-medium">{lang === 'es' ? 'Precio de compra (proveedor):' : 'Supplier purchase price:'}</span>
+                <span class="font-bold text-[#0b3c61] text-sm">{product.precio_de_compra_al_proveedor}</span>
+              </div>
+              <div class="flex justify-between items-center text-gray-600">
+                <span class="font-medium">{lang === 'es' ? 'Precio sugerido de venta:' : 'Suggested sale price:'}</span>
+                <span class="font-bold text-[#299898] text-sm">{product.precio_sugerido_cajaunidad}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-gray-200 text-xs text-[#0b3c61] font-semibold flex items-center gap-1.5">
+            <span class="text-[#76b800] font-bold">✓</span>
+            <span>{lang === 'es' ? 'Ventaja en frescura, calidad y margen comercial directo.' : 'Advantage in freshness, quality, and direct commercial margin.'}</span>
+          </div>
+        </div>
+
+        {/* Competitor Cards with Photo in Clean Frame & Red Price Tag */}
+        <div class="space-y-4">
+          <h3 class="text-xs font-bold text-[#0b3c61] uppercase tracking-wider">
+            {t.fields.competidores_directos}
+          </h3>
+
+          {product.competidores_directos && product.competidores_directos.length > 0 ? (
+            product.competidores_directos.map((competitor) => (
+              <div class="p-5 rounded-sm bg-[#f8f9fa] border border-gray-200 flex items-center justify-between gap-4 shadow-xs">
+                <div class="flex items-center gap-4">
+                  <div class="w-16 h-16 rounded-sm bg-white border border-gray-200 p-1 flex items-center justify-center shrink-0">
+                    <img
+                      src={competitor.image}
+                      alt={competitor.nombre}
+                      class="max-w-full max-h-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>
+                    <span class="text-[10px] uppercase font-bold text-gray-500 tracking-wider">
+                      {t.competitors.product}
+                    </span>
+                    <h4 class="font-bold text-gray-900 text-sm">
+                      {competitor.nombre}
+                    </h4>
+                    <p class="text-xs text-gray-500">
+                      {lang === 'es' ? 'En góndola supermercados' : 'Supermarket retail shelf'}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="text-right shrink-0">
+                  <span class="block text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-1">
+                    {t.competitors.price}
+                  </span>
+                  <span class="inline-block bg-red-600 text-white font-black text-sm px-3 py-1 rounded-sm shadow-xs">
+                    {competitor.precio}
+                  </span>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div class="p-5 rounded-sm bg-[#f8f9fa] border border-gray-200 text-xs text-gray-500 shadow-xs">
+              {lang === 'es' ? 'Sin competidores directos registrados.' : 'No direct competitors registered.'}
+            </div>
+          )}
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================
+        SECCIÓN 4: Análisis financiero preliminar
+        ======================================================== */}
+    <section class="bg-white rounded-sm border border-gray-200 p-6 sm:p-8 shadow-xs">
+      <div class="flex items-center gap-3 border-b border-gray-200 pb-4 mb-6">
+        <div class="w-8 h-8 rounded-sm bg-[#0b3c61] text-white flex items-center justify-center font-bold text-sm shadow-xs">
+          4
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-[#0b3c61] uppercase tracking-wide">
+            {t.sections.financialAnalysis}
+          </h2>
+          <p class="text-xs text-gray-500">
+            {lang === 'es' ? 'Estructura de costos, precios proyectados y rentabilidad bruta' : 'Cost structure, projected pricing, and gross profitability'}
+          </p>
+        </div>
+      </div>
+
+      {/* 5 Clean Corporate KPI Boxes with Bold Navy Values & 30% Margin Highlighted in Lime Green */}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        
+        {/* 1. Compra Proveedor */}
+        <div class="p-4 rounded-sm bg-[#f8f9fa] border border-gray-200 shadow-xs">
+          <span class="text-[11px] font-bold uppercase text-gray-500 tracking-wider">
+            {t.fields.precio_de_compra_al_proveedor}
+          </span>
+          <p class="mt-2 text-xl sm:text-2xl font-black text-[#0b3c61]">
+            {product.precio_de_compra_al_proveedor}
+          </p>
+        </div>
+
+        {/* 2. Venta Sugerida */}
+        <div class="p-4 rounded-sm bg-[#f8f9fa] border border-gray-200 shadow-xs">
+          <span class="text-[11px] font-bold uppercase text-gray-500 tracking-wider">
+            {t.fields.precio_sugerido_cajaunidad}
+          </span>
+          <p class="mt-2 text-xl sm:text-2xl font-black text-[#0b3c61]">
+            {product.precio_sugerido_cajaunidad}
+          </p>
+        </div>
+
+        {/* 3. Margen Sugerido (Highlighted in Lime Green #76b800) */}
+        <div class="p-4 rounded-sm bg-[#76b800]/10 border-2 border-[#76b800] shadow-xs">
+          <span class="text-[11px] font-bold uppercase text-[#76b800] tracking-wider">
+            {t.fields.margen_sugerido}
+          </span>
+          <p class="mt-2 text-xl sm:text-2xl font-black text-[#76b800] flex items-center gap-1">
+            <span>{product.margen_sugerido}</span>
+            <svg class="w-5 h-5 text-[#76b800]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </p>
+        </div>
+
+        {/* 4. Mínimo de Compra */}
+        <div class="p-4 rounded-sm bg-[#f8f9fa] border border-gray-200 shadow-xs">
+          <span class="text-[11px] font-bold uppercase text-gray-500 tracking-wider">
+            {t.fields.minimo_compra}
+          </span>
+          <p class="mt-2 text-xl sm:text-2xl font-black text-[#0b3c61]">
+            {product.minimo_compra}
+          </p>
+        </div>
+
+        {/* 5. Tiempo de Entrega */}
+        <div class="p-4 rounded-sm bg-[#f8f9fa] border border-gray-200 shadow-xs sm:col-span-2 lg:col-span-1">
+          <span class="text-[11px] font-bold uppercase text-gray-500 tracking-wider">
+            {t.fields.tiempo_de_produccin_entrega_estimado}
+          </span>
+          <p class="mt-2 text-xl sm:text-2xl font-black text-[#0b3c61]">
+            {product.tiempo_de_produccin_entrega_estimado}
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================
+        SECCIÓN 5: Evaluación de viabilidad
+        ======================================================== */}
+    <section class="bg-white rounded-sm border border-gray-200 p-6 sm:p-8 shadow-xs">
+      <div class="flex items-center gap-3 border-b border-gray-200 pb-4 mb-6">
+        <div class="w-8 h-8 rounded-sm bg-[#0b3c61] text-white flex items-center justify-center font-bold text-sm shadow-xs">
+          5
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-[#0b3c61] uppercase tracking-wide">
+            {t.sections.feasibility}
+          </h2>
+          <p class="text-xs text-gray-500">
+            {lang === 'es' ? 'Dictamen ejecutivo de rotación, inversión inicial y viabilidad' : 'Executive assessment of turnover, initial capital, and feasibility'}
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        {/* Core Indicators: Investment & Rotation in Clean Corporate Stat Boxes */}
+        <div class="lg:col-span-5 space-y-4">
+          <div class="p-5 rounded-sm bg-[#f8f9fa] border border-gray-200 shadow-xs">
+            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">
+              {t.fields.nivel_de_inversion_inicia}
+            </span>
+            <p class="mt-1 text-2xl font-black text-[#0b3c61]">
+              {product.nivel_de_inversion_inicia}
+            </p>
+            <p class="mt-1 text-xs text-gray-500">
+              {lang === 'es' ? 'Capital de trabajo necesario para orden piloto' : 'Working capital required for pilot order'}
+            </p>
+          </div>
+
+          <div class="p-5 rounded-sm bg-[#f8f9fa] border border-gray-200 shadow-xs">
+            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">
+              {t.fields.rotacion_esperada}
+            </span>
+            <p class="mt-1 text-2xl font-black text-[#0b3c61]">
+              {product.rotacion_esperada}
+            </p>
+            <p class="mt-1 text-xs text-gray-500">
+              {lang === 'es' ? 'Estimación basada en pruebas en canales clave' : 'Estimate based on test runs in primary retail channels'}
+            </p>
+          </div>
+        </div>
+
+        {/* Commercial Recommendation Card with Green Checkmarks */}
+        <div class="lg:col-span-7 p-6 rounded-sm bg-[#f8f9fa] border border-gray-200 shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#1bb75e]"></span>
+              <span class="text-xs uppercase font-extrabold text-[#0b3c61] tracking-wider">
+                {t.feasibilityContent.recommendationLabel}
+              </span>
+            </div>
+            
+            <p class="text-sm sm:text-base font-semibold text-gray-900 leading-relaxed mb-6">
+              {t.feasibilityContent.recommendationText}
+            </p>
+
+            <div class="space-y-3">
+              {t.feasibilityContent.points.map((point) => (
+                <div class="flex items-start gap-3">
+                  <div class="mt-0.5 w-5 h-5 rounded-sm bg-emerald-100 text-[#1bb75e] flex items-center justify-center shrink-0">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span class="text-xs sm:text-sm text-gray-700 font-medium">
+                    {point}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-gray-200 flex flex-wrap items-center justify-between gap-4 text-xs text-gray-500">
+            <span>{lang === 'es' ? 'Aprobado para fase de importación inicial' : 'Approved for initial import trial phase'}</span>
+            <span class="font-bold text-[#0b3c61]">CAD Import Inc Evaluation Dept.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  {/* Bottom Call to Action Footer: Corporate Navy */}
+  <footer class="mt-12 rounded-sm bg-[#0b3c61] text-white p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md border-b-4 border-[#76b800]">
+    <div>
+      <h3 class="text-lg font-bold text-white uppercase tracking-wide">
+        {lang === 'es' ? '¿Deseas incorporar este producto a tu portafolio?' : 'Interested in adding this product to your portfolio?'}
+      </h3>
+      <p class="text-xs sm:text-sm text-slate-200 mt-1">
+        {lang === 'es' ? 'Contáctanos para solicitar muestras físicas, listas de empaque y cotización de flete.' : 'Contact us to request physical samples, packing lists, and freight quotes.'}
+      </p>
+    </div>
+  </footer>
+
+</div>

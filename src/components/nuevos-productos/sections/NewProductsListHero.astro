@@ -11,53 +11,43 @@ const { lang } = Astro.props;
 const t = content[lang] ?? content.es;
 ---
 
-<section class="relative overflow-hidden bg-gradient-to-b from-slate-950 via-[#123838] to-slate-900 text-white py-16 sm:py-24 border-b border-teal-900/40">
-  {/* Decorative ambient background glows */}
-  <div class="absolute inset-0 pointer-events-none overflow-hidden">
-    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-[#299898]/20 blur-[120px] rounded-full"></div>
-    <div class="absolute top-1/2 -right-24 w-96 h-96 bg-emerald-500/10 blur-[100px] rounded-full"></div>
-    <div class="absolute bottom-0 left-10 w-80 h-80 bg-teal-600/10 blur-[90px] rounded-full"></div>
-  </div>
+<section class="relative min-h-[380px] sm:min-h-[460px] flex items-center overflow-hidden border-b-4 border-[#76b800] text-white">
+  {/* Background Image */}
+  <img
+    src="/images/hero_inicio.png"
+    alt="CAD Import Inc Hero"
+    class="absolute inset-0 w-full h-full object-cover object-center"
+    loading="eager"
+  />
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+  {/* Gradient Overlay: Deep navy on the left fading smoothly to transparent across the right */}
+  <div class="absolute inset-0 bg-gradient-to-r from-[#0b3c61] via-[#0b3c61]/85 via-50% to-transparent"></div>
+
+  {/* Content Container aligned to the left */}
+  <div class="relative z-10 w-full px-6 sm:px-12 lg:px-16 py-16 sm:py-24">
+    <div class="max-w-xl text-left">
       
-      {/* Badge */}
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#299898]/15 border border-[#299898]/30 text-teal-300 text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-xs">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>{t.hero.badge}</span>
-      </div>
-
-      {/* Main Title */}
-      <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-tight">
+      {/* Main Corporate Title */}
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight font-sans">
         {t.hero.title}
       </h1>
 
-      {/* Subtitle */}
-      <p class="mt-5 text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl">
+      {/* Corporate Subtitle */}
+      <p class="mt-4 text-base sm:text-lg text-slate-100 leading-relaxed font-normal">
         {t.hero.subtitle}
       </p>
 
-      {/* Highlights / Quick Indicators */}
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-slate-300">
-        <div class="inline-flex items-center gap-2 bg-slate-900/60 border border-teal-800/40 px-3.5 py-1.5 rounded-lg backdrop-blur-xs">
-          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      {/* CTA Button */}
+      <div class="mt-8">
+        <a
+          href="#products-grid"
+          class="inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-bold uppercase tracking-wider text-white bg-[#76b800] hover:bg-[#6aa600] active:bg-[#5d9200] rounded-sm shadow-md transition-colors"
+        >
+          <span>{lang === 'es' ? 'COLABORA CON NOSOTROS' : 'PARTNER WITH US'}</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
           </svg>
-          <span>{lang === 'es' ? 'Fichas Técnicas Certificadas' : 'Certified Technical Sheets'}</span>
-        </div>
-        <div class="inline-flex items-center gap-2 bg-slate-900/60 border border-teal-800/40 px-3.5 py-1.5 rounded-lg backdrop-blur-xs">
-          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-          </svg>
-          <span>{lang === 'es' ? 'Análisis Financiero de Márgenes' : 'Financial Margin Analysis'}</span>
-        </div>
-        <div class="inline-flex items-center gap-2 bg-slate-900/60 border border-teal-800/40 px-3.5 py-1.5 rounded-lg backdrop-blur-xs">
-          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-          </svg>
-          <span>{lang === 'es' ? 'Benchmarking de Competencia' : 'Competitor Benchmarking'}</span>
-        </div>
+        </a>
       </div>
 
     </div>

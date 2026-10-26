@@ -14,7 +14,10 @@
       "subtitle": "Selecciona un producto para consultar su ficha técnica y análisis de viabilidad completo.",
       "empty": "No hay propuestas de productos disponibles por el momento.",
       "filterPlaceholder": "Buscar por nombre, categoría o proveedor...",
-      "allCategories": "Todas las Categorías"
+      "allCategories": "Todas las Categorías",
+      "countLabel": "propuestas disponibles",
+      "noResultsTitle": "No se encontraron resultados",
+      "noResultsHint": "Prueba con otros términos de búsqueda o selecciona otra categoría."
     },
     "sections": {
       "identification": "Identificación del producto",
@@ -81,7 +84,10 @@
       "subtitle": "Select a product to view its technical sheet and full feasibility analysis.",
       "empty": "No product proposals available at this time.",
       "filterPlaceholder": "Search by name, category or supplier...",
-      "allCategories": "All Categories"
+      "allCategories": "All Categories",
+      "countLabel": "proposals available",
+      "noResultsTitle": "No matching results found",
+      "noResultsHint": "Try adjusting your search query or selecting a different category."
     },
     "sections": {
       "identification": "Product identification",
