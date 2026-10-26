@@ -1,71 +1,253 @@
 ---
+import type { Lang } from '../../i18n/config.i18n';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils.i18n';
 
-const lang = getLangFromUrl(Astro.url);
+interface Props {
+  lang?: Lang;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang ?? getLangFromUrl(Astro.url);
 const { navLinks } = useTranslations(lang);
 
 const currentPath = Astro.url.pathname;
-const switchLangPath =
-  lang === "es"
-    ? currentPath.replace("/es", "/en")
-    : currentPath.replace("/en", "/es");
+
+function getSwitchPath(targetLang: Lang, pathname: string): string {
+  const segments = pathname.split('/').filter(Boolean);
+  if (segments.length > 0 && (segments[0] === 'es' || segments[0] === 'en')) {
+    segments[0] = targetLang;
+    return `/${segments.join('/')}${pathname.endsWith('/') && segments.length > 1 ? '/' : ''}`;
+  }
+  return `/${targetLang}${pathname.startsWith('/') ? pathname : `/${pathname}`}`;
+}
+
+const languages = [
+  { code: 'en' as const, label: 'English', flag: '🇺🇸' },
+  { code: 'es' as const, label: 'Español', flag: '🇲🇽' },
+];
+
+const currentLang = languages.find((l) => l.code === lang) ?? languages[0];
 ---
 
-<nav class="sticky top-0 z-50 w-full px-6 py-4 bg-transparent backdrop-blur-md border-b border-gray-100">
-  <div class="max-w-7xl mx-auto flex justify-between items-center">
-    
-    <a href={`/${lang}/`} class="flex items-center gap-2 transition hover:opacity-80">
-      <img src="/icon.png" class="w-10 h-10 object-contain" alt="Logo del sitio" />
-    </a>
-
-    <div class="flex items-center gap-6 sm:gap-8">
+<header class="sticky top-0 z-50 w-full bg-[#299898] border-b border-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-20">
       
-      <ul class="flex items-center gap-6 text-sm font-medium text-gray-600">
-        {navLinks.map((item) => (
-          <li class="relative group">
-            <a 
-              href={item.href} 
-              class="flex items-center gap-1 hover:text-blue-600 transition-colors py-1"
-            >
-              {item.label}
-              {item.children && (
-                <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
+      {/* Logo CAD circular con saliente inferior idéntico a la referencia */}
+      <div class="relative flex-shrink-0 z-20 -mb-7 sm:-mb-9 md:-mb-11 top-1 sm:top-2">
+        <a 
+          href={`/${lang}/`} 
+          class="block w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-white shadow-xl ring-4 ring-white transition-transform duration-300 hover:scale-105 p-1"
+          aria-label="CAD Import Inc"
+        >
+          <img 
+            src="/logo.png" 
+            alt="CAD Import Inc" 
+            class="w-full h-full object-contain rounded-full" 
+            loading="eager" 
+          />
+        </a>
+      </div>
+
+      {/* Enlaces de Navegación Existentes (Desktop) */}
+      <nav class="hidden md:flex items-center gap-6 lg:gap-8 ml-8">
+        <ul class="flex items-center gap-6 lg:gap-8 text-sm md:text-[15px] font-bold uppercase tracking-wider text-white">
+          {navLinks.map((item) => (
+            <li class="relative group">
+              <a 
+                href={item.href} 
+                class="flex items-center gap-1.5 py-2 text-white hover:text-white/80 transition-colors"
+              >
+                <span>{item.label}</span>
+                {item.children && item.children.length > 0 && (
+                  <svg 
+                    class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                  </svg>
+                )}
+              </a>
+
+              {/* Submenú desplegable si existen hijos */}
+              {item.children && item.children.length > 0 && (
+                <div class="absolute left-0 top-full hidden group-hover:block pt-2 w-48 z-50">
+                  <ul class="bg-white text-gray-800 rounded-lg shadow-xl p-1.5 border border-teal-100/60 flex flex-col gap-1">
+                    {item.children.map((child) => (
+                      <li>
+                        <a
+                          href={child.href}
+                          class="block px-3.5 py-2 text-xs font-bold uppercase tracking-wide text-gray-700 hover:bg-[#299898]/10 hover:text-[#299898] rounded-md transition-colors"
+                        >
+                          {child.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               )}
-            </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-            {/* Menú flotante desplegable */}
-            {item.children && item.children.length > 0 && (
-              <div class="absolute left-0 top-full hidden group-hover:block pt-2 w-48 z-50">
-                <ul class="bg-white/95 backdrop-blur-md border border-gray-100 rounded-xl shadow-xl p-1.5 flex flex-col gap-1">
-                  {item.children.map((child) => (
-                    <li>
-                      <a
-                        href={child.href}
-                        class="block px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-lg transition-colors"
-                      >
-                        {child.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
+      {/* Zona Derecha: Selector de Idioma Centrado con Color Similar al Nav + Botón Menú Móvil */}
+      <div class="flex items-center gap-3 sm:gap-4">
+        
+        {/* Selector de Idioma */}
+        <div class="relative group/lang flex items-center">
+          <button
+            type="button"
+            id="lang-menu-button"
+            class="flex items-center justify-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-md bg-[#228484] hover:bg-[#1a7070] text-white text-xs sm:text-sm font-semibold tracking-wide border border-teal-200/40 shadow-sm transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-label="Seleccionar idioma"
+          >
+            <span class="text-base sm:text-lg leading-none select-none">{currentLang.flag}</span>
+            <span class="tracking-wide select-none">{currentLang.label}</span>
+            <svg 
+              class="w-3.5 h-3.5 transition-transform duration-200 group-hover/lang:rotate-180" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
 
-      <div class="hidden sm:block w-px h-5 bg-gray-200"></div>
+          {/* Menú flotante del selector de idioma con color acorde al nav */}
+          <div 
+            id="lang-dropdown-menu"
+            class="absolute right-0 top-full pt-2 hidden group-hover/lang:block z-50 min-w-[140px]"
+          >
+            <div class="bg-[#1f7979] border border-white/20 rounded-md shadow-xl overflow-hidden py-1">
+              {languages.map((item) => {
+                const isCurrent = item.code === lang;
+                const targetHref = getSwitchPath(item.code, currentPath);
+                return (
+                  <a
+                    href={targetHref}
+                    class={`flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-medium transition-colors ${
+                      isCurrent
+                        ? 'bg-[#176262] text-white font-semibold'
+                        : 'text-white/90 hover:bg-[#1b6f6f] hover:text-white'
+                    }`}
+                  >
+                    <span class="text-base leading-none">{item.flag}</span>
+                    <span>{item.label}</span>
+                    {isCurrent && (
+                      <svg class="w-3.5 h-3.5 ml-auto text-teal-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </div>
 
-      <a
-        href={switchLangPath}
-        class="flex items-center justify-center px-3 py-1.5 text-xs sm:text-sm font-semibold text-gray-700 bg-gray-50 border border-gray-200 rounded-full shadow-sm hover:bg-gray-100 hover:text-blue-600 transition-all active:scale-95"
-        title={lang === "es" ? "Switch to English" : "Cambiar a Español"}
-      >
-        {lang === "es" ? "🇺🇸 EN" : "🇲🇽 ES"}
-      </a>
+        {/* Botón Hamburger Móvil */}
+        <button
+          type="button"
+          id="mobile-menu-btn"
+          class="md:hidden p-2 rounded-lg text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/40 transition-colors"
+          aria-expanded="false"
+          aria-label="Abrir menú"
+        >
+          <svg class="w-6 h-6" id="menu-icon-bars" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg class="w-6 h-6 hidden" id="menu-icon-close" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+      </div>
 
     </div>
   </div>
-</nav>
+
+  {/* Drawer Móvil */}
+  <div 
+    id="mobile-nav-panel" 
+    class="hidden md:hidden bg-[#248888] border-t border-white/20 px-6 py-5 shadow-inner"
+  >
+    <ul class="flex flex-col gap-4 text-sm font-bold uppercase tracking-wider text-white">
+      {navLinks.map((item) => (
+        <li class="flex flex-col gap-2">
+          <a 
+            href={item.href} 
+            class="flex items-center justify-between py-1 hover:text-teal-100 transition-colors"
+          >
+            <span>{item.label}</span>
+          </a>
+          {item.children && item.children.length > 0 && (
+            <ul class="pl-4 border-l-2 border-white/20 flex flex-col gap-2">
+              {item.children.map((child) => (
+                <li>
+                  <a 
+                    href={child.href} 
+                    class="block py-1 text-xs text-white/90 hover:text-white transition-colors"
+                  >
+                    {child.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  function setupNavbar() {
+    // Control Menú Móvil
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menuPanel = document.getElementById('mobile-nav-panel');
+    const iconBars = document.getElementById('menu-icon-bars');
+    const iconClose = document.getElementById('menu-icon-close');
+
+    if (menuBtn && menuPanel && iconBars && iconClose) {
+      menuBtn.onclick = () => {
+        const isOpen = !menuPanel.classList.contains('hidden');
+        if (isOpen) {
+          menuPanel.classList.add('hidden');
+          iconBars.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        } else {
+          menuPanel.classList.remove('hidden');
+          iconBars.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+          menuBtn.setAttribute('aria-expanded', 'true');
+        }
+      };
+    }
+
+    // Soporte táctil / click para el selector de idioma
+    const langBtn = document.getElementById('lang-menu-button');
+    const langDropdown = document.getElementById('lang-dropdown-menu');
+
+    if (langBtn && langDropdown) {
+      langBtn.onclick = (e) => {
+        e.stopPropagation();
+        langDropdown.classList.toggle('hidden');
+      };
+
+      document.addEventListener('click', (e) => {
+        if (!langDropdown.contains(e.target as Node) && !langBtn.contains(e.target as Node)) {
+          langDropdown.classList.add('hidden');
+        }
+      });
+    }
+  }
+
+  setupNavbar();
+  document.addEventListener('astro:page-load', setupNavbar);
+</script>

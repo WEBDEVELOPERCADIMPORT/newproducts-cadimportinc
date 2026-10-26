@@ -1,7 +1,7 @@
 import { LANGUAGES } from '../../i18n/config.i18n';
 
 
-const BASE_URL = 'https://autroui.com';
+const BASE_URL = 'https://newproducts.cadimportinc.com';
 const langs = Object.keys(LANGUAGES);
 
 /**
