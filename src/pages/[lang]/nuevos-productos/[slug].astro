@@ -18,18 +18,20 @@ const t = content[lang];
 
 // 2. Ejecutar Server Action para obtener la propuesta por su slug
 const { data: response, error } = await Astro.callAction(
-  actions.getProductProposalBySlug,
+  actions.getProductBySlug,
   {
     slug,
+    productSlug: slug,
     lang,
   },
 );
 
-if (error || !response?.data) {
+const rawProduct = (response && typeof response === 'object' && 'data' in response) ? (response as { data: any }).data : response;
+const product = (rawProduct && typeof rawProduct === 'object' && ('slug' in rawProduct || 'nombre_marca_del_producto' in rawProduct)) ? rawProduct : null;
+
+if (error || !product) {
   return Astro.redirect("/404");
 }
-
-const product = response.data;
 
 const pageTitle = `${product.nombre_marca_del_producto} | ${lang === "es" ? "Evaluación de Producto" : "Product Evaluation"} | CAD Import Inc`;
 const pageDescription = `${product.nombre_marca_del_producto} (${product.clase_categoria}) - ${product.procedencia}. Margen sugerido: ${product.margen_sugerido}. Proveedor: ${product.proveedor_fabricante}.`;

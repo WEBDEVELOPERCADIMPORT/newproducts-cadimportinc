@@ -26,19 +26,23 @@ let products: ProductProposal[] = [];
 if (hasCategoryFilter && categoryParam) {
   const { data: response } = await Astro.callAction(actions.getProductsByCategory, {
     category: categoryParam,
+    categorySlug: categoryParam,
     lang,
   });
-  products = response?.data ?? [];
+  const rawData = response?.data ?? response;
+  products = Array.isArray(rawData) ? rawData : (Array.isArray(rawData?.data) ? rawData.data : []);
 } else {
-  const { data: response } = await Astro.callAction(actions.getNewProducts, { lang });
-  products = response?.data ?? [];
+  const { data: response } = await Astro.callAction(actions.getProducts, { lang });
+  const rawData = response?.data ?? response;
+  products = Array.isArray(rawData) ? rawData : (Array.isArray(rawData?.data) ? rawData.data : []);
 }
 
 // Extraer categorías únicas para el filtro
 let allProductsForCategories = products;
 if (hasCategoryFilter) {
-  const { data: allResponse } = await Astro.callAction(actions.getNewProducts, { lang });
-  allProductsForCategories = allResponse?.data ?? products;
+  const { data: allResponse } = await Astro.callAction(actions.getProducts, { lang });
+  const rawAll = allResponse?.data ?? allResponse;
+  allProductsForCategories = Array.isArray(rawAll) ? rawAll : (Array.isArray(rawAll?.data) ? rawAll.data : products);
 }
 const categories = Array.from(new Set(allProductsForCategories.map((p) => p.clase_categoria))).filter(Boolean);
 ---
