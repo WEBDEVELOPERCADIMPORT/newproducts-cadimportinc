@@ -9,6 +9,8 @@ export interface ProductProposal {
   slug: string;
   image: string;
   tamao: string;
+  aprobado?: boolean | string;
+  revisado?: boolean | string;
   procedencia: string;
   ingredientes: string[];
   minimo_compra: string;

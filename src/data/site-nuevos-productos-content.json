@@ -60,6 +60,10 @@
         "Cadena de suministro establecida con tiempos de entrega confiables"
       ]
     },
+    "status": {
+      "approved": "Aprobado",
+      "rejected": "No aprobado"
+    },
     "actions": {
       "viewDetails": "Ver Ficha Técnica",
       "viewEvaluation": "Ver Evaluación",
@@ -129,6 +133,10 @@
         "Compliance with international sanitary and quality certifications",
         "Established supply chain with reliable delivery lead times"
       ]
+    },
+    "status": {
+      "approved": "Approved",
+      "rejected": "Not Approved"
     },
     "actions": {
       "viewDetails": "View Technical Sheet",
