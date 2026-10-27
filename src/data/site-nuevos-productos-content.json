@@ -62,7 +62,8 @@
     },
     "status": {
       "approved": "Aprobado",
-      "rejected": "No aprobado"
+      "rejected": "No aprobado",
+      "pending": "Por revisar"
     },
     "actions": {
       "viewDetails": "Ver Ficha Técnica",
@@ -136,7 +137,8 @@
     },
     "status": {
       "approved": "Approved",
-      "rejected": "Not Approved"
+      "rejected": "Not Approved",
+      "pending": "To Review"
     },
     "actions": {
       "viewDetails": "View Technical Sheet",

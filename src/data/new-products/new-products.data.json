@@ -74,6 +74,8 @@
         "id": "bebida-de-horchata-tradicional",
         "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/Guatelinda_Salsa_Chile_Cobanero.jpeg",
         "tamao": "16 FL OZ",
+        "aprobado": false,
+        "revisado": false,
         "procedencia": "Guatemala",
         "ingredientes": [
           "Arroz",
@@ -179,6 +181,8 @@
         "id": "bebida-de-horchata-tradicional",
         "image": "https://pub-5927920071e7461abb3ddbb3dcbff7a2.r2.dev/3c9b0c21-eafd-4999-8b66-853f65ecb490/new products/Guatelinda Salsa Chile Cobanero/Guatelinda_Salsa_Chile_Cobanero.jpeg",
         "tamao": "16 FL OZ",
+        "aprobado": false,
+        "revisado": false,
         "procedencia": "Guatemala",
         "ingredientes": [
           "Rice",

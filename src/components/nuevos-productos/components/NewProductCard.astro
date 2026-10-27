@@ -23,43 +23,49 @@ const isAprobado =
   product.aprobado === 'true' ||
   (typeof product.aprobado === 'string' && product.aprobado.trim().toLowerCase() === 'aprobado');
 
-const statusText = isAprobado
-  ? (t.status?.approved ?? (lang === 'es' ? 'Aprobado' : 'Approved'))
-  : (t.status?.rejected ?? (lang === 'es' ? 'No aprobado' : 'Not Approved'));
+// Determinar estado:
+// 1. Si no está revisado (revisado === false | falsy) -> 'Por revisar' (Rojo)
+// 2. Si está revisado:
+//    - aprobado === true -> 'Aprobado' (Verde)
+//    - aprobado === false -> 'No aprobado' (Rojo)
+const isApprovedState = isRevisado && isAprobado;
+const statusText = !isRevisado
+  ? (t.status?.pending ?? (lang === 'es' ? 'Por revisar' : 'To Review'))
+  : isAprobado
+    ? (t.status?.approved ?? (lang === 'es' ? 'Aprobado' : 'Approved'))
+    : (t.status?.rejected ?? (lang === 'es' ? 'No aprobado' : 'Not Approved'));
 ---
 
 <article 
   class="group relative flex flex-col h-full bg-white border border-gray-200 rounded-sm shadow-xs hover:shadow-md hover:border-[#299898] transition-all duration-200 overflow-hidden"
   data-product-card
   data-category={product.clase_categoria}
-  data-search={`${product.nombre_marca_del_producto} ${product.clase_categoria} ${product.proveedor_fabricante} ${product.procedencia} ${isRevisado ? statusText : ''}`.toLowerCase()}
+  data-search={`${product.nombre_marca_del_producto} ${product.clase_categoria} ${product.proveedor_fabricante} ${product.procedencia} ${statusText}`.toLowerCase()}
 >
   {/* Product Image in clean white framed container with light border */}
   <div class="relative w-full h-56 bg-white border-b border-gray-200 flex items-center justify-center p-4 overflow-hidden">
-    {/* Status Chip (Aprobado / No aprobado) - Visible únicamente cuando 'revisado' es true */}
-    {isRevisado && (
-      <div class="absolute top-2.5 left-2.5 z-10 pointer-events-none">
-        <span
-          class:list={[
-            "inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider rounded-sm shadow-xs border",
-            isAprobado
-              ? "bg-[#76b800] text-white border-[#6aa600]"
-              : "bg-red-600 text-white border-red-700",
-          ]}
-        >
-          {isAprobado ? (
-            <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-            </svg>
-          ) : (
-            <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          )}
-          <span>{statusText}</span>
-        </span>
-      </div>
-    )}
+    {/* Status Chip (Aprobado / No aprobado / Por revisar) */}
+    <div class="absolute top-2.5 left-2.5 z-10 pointer-events-none">
+      <span
+        class:list={[
+          "inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider rounded-sm shadow-xs border",
+          isApprovedState
+            ? "bg-[#76b800] text-white border-[#6aa600]"
+            : "bg-red-600 text-white border-red-700",
+        ]}
+      >
+        {isApprovedState ? (
+          <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+          </svg>
+        ) : (
+          <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        )}
+        <span>{statusText}</span>
+      </span>
+    </div>
 
     <img
       src={product.image}
